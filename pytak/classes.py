@@ -126,7 +126,8 @@ class Worker:
                 continue
 
             await self.handle_data(data)
-            await self.fts_compat()
+            if bool(self.config.get("FTS_COMPAT")):
+                await self.fts_compat()
 
             number_of_iterations -= 1
 
